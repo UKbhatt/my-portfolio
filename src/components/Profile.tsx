@@ -1,5 +1,5 @@
 import { CometCard } from "@/components/ui/comet-card";
-import profile from "../../public/logo.jpg"
+import profile from "../../public/logo1.jpg"
 import Image from "next/image";
 
 export function CometCardDemo() {

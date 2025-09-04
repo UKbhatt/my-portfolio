@@ -1,4 +1,4 @@
-import BackgroundRippleEffectDemo from "../view/bg" ; 
+import BackgroundRippleEffectDemo from "../view/portfolio" ; 
 export default function Home() {
   return(
     <>

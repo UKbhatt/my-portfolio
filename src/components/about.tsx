@@ -1,6 +1,4 @@
 "use client";
-import ArrowTrackingBubble from "./arrowtracker";
-import Reveal from "./reaveal";
 import { FaFileLines, FaFolderOpen } from "react-icons/fa6";
 
 
@@ -10,25 +8,19 @@ export default function AboutSection() {
             id="about"
             className="w-full px-4 md:px-8 lg:px-16 py-16 md:py-24 text-foreground"
         >
-            <ArrowTrackingBubble fullScreen size={56} className="z-0" />
 
             <div className="mx-auto max-w-5xl flex flex-col items-center text-center">
-                <Reveal>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight flex flex-row gap-5 bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">
                         About Me
                     </h2>
-                </Reveal>
 
-                <Reveal delay={120}>
                     <p className="mt-4 text-sm sm:text-base leading-relaxed text-gray-300/90 max-w-2xl">
                         I’m Utkarsh, a developer who enjoys building fast, clean, and delightful
                         experiences. I work across the stack—React/Next.js on the front-end
                         and Node.js on the back—focused on performance and DX.
                     </p>
-                </Reveal>
 
                 <div className="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 w-full max-w-xl">
-                    <Reveal delay={180}>
                         <a
                             href="/Utkarsh_resume.pdf"
                             download
@@ -43,15 +35,13 @@ export default function AboutSection() {
               group-hover:translate-y-[-2px]" />
                             <span className="font-semibold text-sm sm:text-base">Download Resume</span>
                         </a>
-                    </Reveal>
 
-                    <Reveal delay={240}>
                         <div
                             role="link"
                             aria-label="View Projects"
                             tabIndex={0}
                             onClick={() =>
-                                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                                document.getElementById("project")?.scrollIntoView({ behavior: "smooth" })
                             }
                             onKeyDown={(e) => {
                                 if (e.key === "Enter" || e.key === " ") {
@@ -68,7 +58,6 @@ export default function AboutSection() {
               group-hover:translate-y-[-2px]" />
                             <span className="font-semibold text-sm sm:text-base">View Projects</span>
                         </div>
-                    </Reveal>
                 </div>
             </div>
         </section>
