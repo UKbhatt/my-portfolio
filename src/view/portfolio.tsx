@@ -20,8 +20,7 @@ import twiddle from "@/app/Assets/project/twiddle.png";
 import reading from "@/app/Assets/project/Reading.png";
 import certificate from "@/app/Assets/certificate.png";
 import Footer from "@/components/footer";
-import Reveal from "@/components/reaveal";
-import { div } from "framer-motion/client";
+import Reveal from "@/components/reveal";
 
 export default function BackgroundRippleEffectDemo() {
     const [tab, setTab] = useState<"projects" | "certs" | "stack">("projects");
