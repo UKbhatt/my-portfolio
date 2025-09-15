@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ParticleBackground } from "@/components/particle-background";
-import { CometCardDemo } from "@/components/profile";
+import { CometCardDemo } from "@/components/Profile";
 import { SmallButton } from "@/components/button";
 import { SquareButton } from "@/components/square-button";
 import { Briefcase, Github, Linkedin } from "lucide-react";
