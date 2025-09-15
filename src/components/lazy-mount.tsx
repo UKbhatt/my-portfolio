@@ -4,15 +4,10 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 
 type Props = {
   children: ReactNode;
-  /** When to start loading, e.g. "200px" before viewport */
   rootMargin?: string;
-  /** 0..1 – how much must be visible to trigger */
   threshold?: number;
-  /** Keep mounted after first time */
   once?: boolean;
-  /** Optional placeholder while offscreen */
   fallback?: ReactNode;
-  /** Enable entrance animation (defaults on) */
   animate?: boolean;
 };
 
@@ -46,7 +41,6 @@ export default function LazyMount({
     return () => observer.disconnect();
   }, [rootMargin, threshold, once]);
 
-  // Keep a lightweight box in the flow to avoid layout shift
   return (
     <div ref={ref}>
       {visible ? (

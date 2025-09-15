@@ -1,26 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import { ParticleBackground } from "@/components/particle-background";
-import { CometCardDemo } from "@/components/Profile";
-import TypedText from "@/components/typed";
+import { CometCardDemo } from "@/components/profile";
 import { SmallButton } from "@/components/button";
 import { SquareButton } from "@/components/square-button";
 import { Briefcase, Github, Linkedin } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SocialButton } from "@/components/socialButton";
+import { ThreeDCardDemo } from "@/components/3dCard";
+import { TechGrid } from "@/components/techCard";
+import TypedText from "@/components/typed";
 import AboutSection from "@/components/about";
 import TabsBar from "@/components/tab";
-import { ThreeDCardDemo } from "@/components/3dCard";
 import ImageCard from "@/components/imageCard";
-import { TechGrid } from "@/components/techCard";
 import Supremecoding from "@/app/Assets/project/SupremeCoding.png";
 import student from "@/app/Assets/project/Student.png";
 import mockmate from "@/app/Assets/project/Mockmate.png";
+import chatnest from "@/app/Assets/project/Chatnest.png";
 import twiddle from "@/app/Assets/project/twiddle.png";
 import reading from "@/app/Assets/project/Reading.png";
 import certificate from "@/app/Assets/certificate.png";
 import Footer from "@/components/footer";
 import Reveal from "@/components/reveal";
+import ExperienceSection from "@/components/exprienceSetion";
+import StatsSection from "@/components/statSection";
 
 export default function BackgroundRippleEffectDemo() {
     const [tab, setTab] = useState<"projects" | "certs" | "stack">("projects");
@@ -66,7 +69,7 @@ export default function BackgroundRippleEffectDemo() {
                         </div>
 
                         <div className="flex gap-6 py-5 items-center">
-                            <SocialButton href="https://github.com/UKbhatt" icon={<Github size={22} />} />
+                            <SocialButton href={process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? ""} icon={<Github size={22} />} />
                             <SocialButton
                                 href="https://www.linkedin.com/in/utkarsh-bhatt-183325261/"
                                 icon={<Linkedin size={22} />}
@@ -86,12 +89,29 @@ export default function BackgroundRippleEffectDemo() {
                 </Reveal>
 
                 <Reveal delay={120}>
+                    <ExperienceSection />
+                </Reveal>
+                <Reveal delay={120}>
+                    <div className="py-10" >
+                        <center>
+                            <h2 className="justify-center text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight flex flex-row gap-5 
+                    bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">
+                                Problem Solving Stats
+                            </h2>
+                            <StatsSection
+                                cfHandle={process.env.NEXT_PUBLIC_CODEFORCES_HANDLE ?? ""}
+                                lcUser={process.env.NEXT_PUBLIC_LEETCODE_USERNAME ?? ""}
+                                ghUser={process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? ""} />
+                        </center>
+                    </div>
+                </Reveal>
+
+                <Reveal delay={120}>
                     <h2 className=" justify-center text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight flex flex-row gap-5 bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">
                         My Projects & Skills
                     </h2>
 
                     <section className="relative min-h-screen w-full flex flex-col items-center justify-start overflow-hidden">
-
                         <div className="mt-10 w-full">
                             <TabsBar initial="projects" onChange={setTab} />
                         </div>
@@ -108,10 +128,11 @@ export default function BackgroundRippleEffectDemo() {
                                             tech={["Next.js", "Tailwindcss", "Node.js"]}
                                         />
                                         <ThreeDCardDemo
-                                            name="CoCreate"
-                                            github="https://github.com/UKbhatt/CoCreate"
-                                            image="https://cms.pixso.net/images/articles/profile-page-design.png"
-                                            tech={["Next.js", "Tailwindcss", "Node.js" ,"Liveblocks"]}
+                                            name="ChatNest"
+                                            github="https://github.com/UKbhatt/ChatNest"
+                                            image={chatnest}
+                                            live="https://chat-nest-chi.vercel.app/"
+                                            tech={["React.js", "Tailwindcss", "Node.js", "Socket.io"]}
 
                                         />
                                         <ThreeDCardDemo
@@ -156,7 +177,6 @@ export default function BackgroundRippleEffectDemo() {
                                 )}
                             </div>
                         </Reveal>
-
                         <Footer />
                     </section>
                 </Reveal>
