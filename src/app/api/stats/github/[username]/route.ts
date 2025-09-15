@@ -2,23 +2,42 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   _req: Request,
-  { params }: { params: { username: string } }
+  context: { params: { username: string } }
 ) {
-  const username = params.username;
+  const { username } = await context.params; 
 
   try {
     const [userRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, { headers: { "User-Agent": "Portfolio-Stats" } }),
-      fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`, { headers: { "User-Agent": "Portfolio-Stats" } }),
+      fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, {
+        headers: { "User-Agent": "Portfolio-Stats" },
+      }),
+      fetch(
+        `https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`,
+        { headers: { "User-Agent": "Portfolio-Stats" } }
+      ),
     ]);
+
     if (!userRes.ok || !reposRes.ok) {
-      return NextResponse.json({ username, publicRepos: 0, followers: 0, following: 0, totalStars: 0, languages: [] }, { status: 200 });
+      return NextResponse.json(
+        {
+          username,
+          publicRepos: 0,
+          followers: 0,
+          following: 0,
+          totalStars: 0,
+          languages: [],
+        },
+        { status: 200 }
+      );
     }
 
     const user = await userRes.json();
     const repos = await reposRes.json();
 
-    const totalStars = (repos ?? []).reduce((acc: number, r: any) => acc + (r?.stargazers_count ?? 0), 0);
+    const totalStars = (repos ?? []).reduce(
+      (acc: number, r: any) => acc + (r?.stargazers_count ?? 0),
+      0
+    );
 
     const langCount: Record<string, number> = {};
     for (const r of repos ?? []) {
@@ -38,6 +57,16 @@ export async function GET(
       languages,
     });
   } catch {
-    return NextResponse.json({ username, publicRepos: 0, followers: 0, following: 0, totalStars: 0, languages: [] }, { status: 200 });
+    return NextResponse.json(
+      {
+        username,
+        publicRepos: 0,
+        followers: 0,
+        following: 0,
+        totalStars: 0,
+        languages: [],
+      },
+      { status: 200 }
+    );
   }
 }

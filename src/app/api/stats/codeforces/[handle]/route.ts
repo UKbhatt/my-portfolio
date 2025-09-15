@@ -1,4 +1,3 @@
-// app/api/stats/codeforces/[handle]/route.ts
 import { NextResponse } from "next/server";
 
 type CFSubmission = {

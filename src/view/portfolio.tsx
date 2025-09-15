@@ -69,7 +69,7 @@ export default function BackgroundRippleEffectDemo() {
                         </div>
 
                         <div className="flex gap-6 py-5 items-center">
-                            <SocialButton href={process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? ""} icon={<Github size={22} />} />
+                            <SocialButton href="https://github.com/UKbhatt" icon={<Github size={22} />} />
                             <SocialButton
                                 href="https://www.linkedin.com/in/utkarsh-bhatt-183325261/"
                                 icon={<Linkedin size={22} />}

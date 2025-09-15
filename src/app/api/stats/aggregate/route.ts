@@ -1,4 +1,3 @@
-// app/api/stats/aggregate/route.ts
 import { NextResponse } from "next/server";
 import { parseHandle } from "@/lib/parseProfile";
 
