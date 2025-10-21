@@ -8,6 +8,7 @@ type Experience = {
     company: string;
     role: string;
     period: string;
+    type: string;
     logo?: string | StaticImageData;
     bullets?: string[];
     color?: string;
@@ -16,8 +17,9 @@ type Experience = {
 const EXPERIENCES: Experience[] = [
     {
         company: "Digital Guruji",
-        role: "Flutter Developere Intern",
+        role: "Flutter Developer",
         period: "May 2025 -- Aug 2025",
+        type: "Internship",
         logo: digital,
         bullets: [
             "Built responsive, cross-platform Flutter apps with seamless Android and iOS performance.",

@@ -18,9 +18,9 @@ type CFRatingUpdate = { contestId: number; newRating: number };
 
 export async function GET(
   _req: Request,
-  { params }: { params: { handle: string } }
+  { params }: { params: Promise<{ handle: string }> }
 ) {
-  const handle = params.handle;
+  const { handle } = await params;
 
   try {
     const [subsRes, infoRes, histRes] = await Promise.all([

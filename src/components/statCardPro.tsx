@@ -37,7 +37,7 @@ type GH = {
 export type StatCardProProps = {
   kind: "codeforces" | "leetcode" | "github";
   title?: string;
-  accent: string; // e.g. "from-blue-500 to-indigo-500"
+  accent: string; 
   iconSrc: StaticImageData;
   href?: string;
   loading?: boolean;
@@ -52,7 +52,6 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-// Decorative, consistent footer mini-bar for all cards
 const FooterMiniBar = ({ accent }: { accent: string }) => (
   <div className="mt-6">
     <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
@@ -77,12 +76,10 @@ export default function StatCardPro({
   const Container = ({ children }: { children: React.ReactNode }) => (
     <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:bg-white/[0.07] transition-colors">
       {children}
-      {/* consistent mini bar at the bottom for every card */}
       <FooterMiniBar accent={accent} />
     </div>
   );
 
-  // Head with icon + title
   const Head = (
     <div className="flex items-center gap-2 text-base text-white/85 font-semibold">
       <Image src={iconSrc} alt={`${kind} icon`} width={22} height={22} />
@@ -90,7 +87,6 @@ export default function StatCardPro({
     </div>
   );
 
-  // Clickable wrapper if href is provided
   const Wrap = ({ children }: { children: React.ReactNode }) =>
     href ? (
       <Link
@@ -104,7 +100,6 @@ export default function StatCardPro({
       <>{children}</>
     );
 
-  // --- Loading: use logo as loader ---
   if (loading) {
     return (
       <Container>

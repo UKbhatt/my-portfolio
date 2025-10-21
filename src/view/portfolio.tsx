@@ -1,37 +1,49 @@
 "use client";
-import React, { useState } from "react";
-import { ParticleBackground } from "@/components/particle-background";
-import { CometCardDemo } from "../components/Profile";
+import React, { useEffect, useState } from "react";
+import { ParticleBackground } from "@components/particle-background";
+import { CometCardDemo } from "@components/Profile";
 import { SmallButton } from "../components/button";
-import { SquareButton } from "@/components/square-button";
+import { SquareButton } from "@components/square-button";
 import { Briefcase, Github, Linkedin } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
-import { SocialButton } from "@/components/socialButton";
-import { ThreeDCardDemo } from "@/components/3dCard";
-import { TechGrid } from "@/components/techCard";
-import TypedText from "@/components/typed";
-import AboutSection from "@/components/about";
-import TabsBar from "@/components/tab";
-import ImageCard from "@/components/imageCard";
-import Supremecoding from "@/app/Assets/project/SupremeCoding.png";
-import student from "@/app/Assets/project/Student.png";
-import mockmate from "@/app/Assets/project/Mockmate.png";
-import chatnest from "@/app/Assets/project/Chatnest.png";
-import twiddle from "@/app/Assets/project/twiddle.png";
-import reading from "@/app/Assets/project/Reading.png";
-import certificate from "@/app/Assets/certificate.png";
-import Footer from "@/components/footer";
-import Reveal from "@/components/reveal";
-import ExperienceSection from "@/components/exprienceSetion";
-import StatsSection from "@/components/statSection";
+import { SocialButton } from "@components/socialButton";
+import { ThreeDCardDemo } from "@components/3dCard";
+import { TechGrid } from "@components/techCard";
+import TypedText from "@components/typed";
+import AboutSection from "@components/about";
+import TabsBar from "@components/tab";
+import ImageCard from "@components/imageCard";
+import Supremecoding from "@app/Assets/project/SupremeCoding.png";
+import student from "@app/Assets/project/Student.png";
+import mockmate from "@app/Assets/project/Mockmate.png";
+import chatnest from "@app/Assets/project/Chatnest.png";
+import twiddle from "@app/Assets/project/twiddle.png";
+import reading from "@app/Assets/project/Reading.png";
+import certificate from "@app/Assets/certificate.png";
+import Footer from "@components/footer";
+import Reveal from "@components/reveal";
+import ExperienceSection from "@components/exprienceSetion";
+import StatsSection from "@components/statSection";
+import { TracingBeam } from "@components/ui/tracing-beam";
 
 export default function BackgroundRippleEffectDemo() {
     const [tab, setTab] = useState<"projects" | "certs" | "stack">("projects");
+    
+    useEffect(() => {
+        const htmlEl = document.documentElement;
+        const bodyEl = document.body;
+        htmlEl.classList.add("no-scrollbar");
+        bodyEl.classList.add("no-scrollbar");
+        return () => {
+            htmlEl.classList.remove("no-scrollbar");
+            bodyEl.classList.remove("no-scrollbar");
+        };
+    }, []);
 
     return (
-        <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
+        <main className="relative min-h-screen bg-black text-white overflow-x-hidden" id="portfolio-root">
             <ParticleBackground />
-            <div className="relative z-10">
+            <TracingBeam className="relative z-10 max-w-none">
                 <section className="flex flex-col md:flex-row items-center justify-between px-4 md:px-8 lg:px-16 py-12 gap-8">
                     <div className="w-full md:w-1/2 flex flex-col items-start">
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -180,7 +192,7 @@ export default function BackgroundRippleEffectDemo() {
                         <Footer />
                     </section>
                 </Reveal>
-            </div>
+            </TracingBeam>
         </main>
     );
 }

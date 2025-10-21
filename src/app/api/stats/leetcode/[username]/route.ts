@@ -33,9 +33,9 @@ async function fetchContestTopPercent(username: string) {
 
 export async function GET(
   _req: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ) {
-  const username = params.username;
+  const { username } = await params;
 
   try {
     const [mirror, contest] = await Promise.all([
