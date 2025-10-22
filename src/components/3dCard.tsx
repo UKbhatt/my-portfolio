@@ -8,14 +8,13 @@ type ContentProps = {
   name: string;
   live?: string;
   github: string;
-  tech?: string[];   // ✅ new
-  status?: "in-progress" | "completed" | "planned"; // ✅ new
+  tech?: string[];   
+  status?: "in-progress" | "completed" | "planned"; 
 };
 
 export function ThreeDCardDemo({ image, name, live, github, tech, status }: ContentProps) {
   const src = typeof image === "string" ? image : image.src;
 
-  // ✅ status color mapping
   const statusColors: Record<string, string> = {
     "in-progress": "bg-yellow-500/20 text-yellow-400 border-yellow-400/30",
     "completed": "bg-green-500/20 text-green-400 border-green-400/30",

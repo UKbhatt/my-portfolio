@@ -1,8 +1,9 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
 import Reveal from "@/components/reveal";
-import { Briefcase } from "lucide-react" ; 
-import digital  from "../app/Assets/digitalGuruji.jpg";
+import { Briefcase } from "lucide-react";
+import digital from "../app/Assets/digitalGuruji.jpg";
+import bellenoor from "../app/Assets/bellenoor.avif";
 
 type Experience = {
     company: string;
@@ -16,7 +17,21 @@ type Experience = {
 
 const EXPERIENCES: Experience[] = [
     {
-        company: "Digital Guruji",
+        company: "Bellenoor Pvt. Ltd.",
+        role: "Flutter Developer",
+        period: "Aug 2025 -- Sep 2025",
+        type: "Internship",
+        logo: bellenoor,
+        bullets: [
+            "Collaborated on end-to-end features, working on both frontend (Flutter/Dart) and backend integration with AWS cloud infrastructure.",
+            "Integrated AWS services such as API Gateway, Lambda, S3, DynamoDB to enable secure data storage, authentication, and backend workflows.",
+            "Leveraged AWS SDK and Amplify for real-time data sync, authentication, and deployment pipelines.",
+
+        ],
+        color: "from-red-500 to-yellow-500",
+    },
+    {
+        company: "Digital Guruji Pvt. Ltd.",
         role: "Flutter Developer",
         period: "May 2025 -- Aug 2025",
         type: "Internship",
@@ -27,9 +42,9 @@ const EXPERIENCES: Experience[] = [
             " Optimized app performance via efficient state management and API handling, reducing load time.",
             "Wrote unit and integration tests for backend APIs, reducing post-release bugs.",
         ],
-        color: "from-blue-500 to-indigo-500",
+        color: "from-red-900 to-orange-400",
     },
-   
+
 ];
 
 export default function ExperienceSection() {
@@ -47,22 +62,34 @@ export default function ExperienceSection() {
                             <div className="absolute left-[-1.4rem] top-6 h-4 w-4 rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-500 ring-2 ring-white/20 hidden sm:block" />
 
                             <div className="flex items-start gap-4">
-                                <div className="shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-white/10 to-white/0 flex items-center justify-center ring-1 ring-white/10 overflow-hidden">
+                                <div className="shrink-0 h-12 w-12 rounded-xl bg-white flex items-center justify-center ring-1 ring-white/10 overflow-hidden">
                                     {exp.logo ? (
-                                        <Image src={exp.logo} alt={exp.company} width={36} height={36} className="object-contain" />
+                                        <Image
+                                            src={exp.logo}
+                                            alt={exp.company}
+                                            width={36}
+                                            height={36}
+                                            className="object-contain"
+                                            style={{ backgroundColor: 'white' }}
+                                        />
                                     ) : (
-                                        <Briefcase className="text-white/70" />
+                                        <Briefcase className="text-gray-700" />
                                     )}
                                 </div>
 
+
                                 <div className="flex-1">
                                     <div className="flex flex-wrap items-center justify-between gap-2">
-                                        <div className="text-lg font-semibold">{exp.role} · {exp.company}</div>
+                                        <div className="text-lg font-semibold">{exp.company} · {exp.role} </div>
                                         <div className="text-sm text-white/60">{exp.period}</div>
                                     </div>
-                                    <ul className="mt-2 space-y-1 text-white/80 text-sm">
-                                        {exp.bullets?.map((b, idx) => <li key={idx}>• {b}</li>)}
-                                    </ul>
+                                    <div>
+                                        <div className="text-sm text-white">{exp.type}</div>
+
+                                        <ul className="mt-2 space-y-1 text-white/80 text-sm">
+                                            {exp.bullets?.map((b, idx) => <li key={idx}>• {b}</li>)}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
