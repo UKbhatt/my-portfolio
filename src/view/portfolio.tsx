@@ -7,7 +7,15 @@ import Supremecoding from "@app/Assets/project/SupremeCoding.png";
 import student from "@app/Assets/project/Student.png";
 import mockmate from "@app/Assets/project/Mockmate.png";
 import chatnest from "@app/Assets/project/Chatnest.png";
+import cocreate from "@app/Assets/project/cocreate.png";
+import inboxiq from "@app/Assets/project/inboxiq.png";
+import jobcompass from "@app/Assets/project/jobcompass.png";
+import talkai from "@app/Assets/project/talkai.png";
 import twiddle from "@app/Assets/project/twiddle.png";
+import healthdesk from "@app/Assets/project/healthdesk.png";
+import vaaniai from "@app/Assets/project/vaaniai.jpg";
+import sharesi from "@app/Assets/project/sharesi.jpg";
+import asd from "@app/Assets/project/asd.png";
 import reading from "@app/Assets/project/Reading.png";
 import certificate from "@app/Assets/certificate.png";
 import cuda from "@app/Assets/cuda.png";
@@ -16,7 +24,7 @@ import profileImageAlt from "@app/Assets/pf.jpg";
 import Reveal from "@components/reveal";
 import ExperienceSection from "@components/exprienceSetion";
 import StatsSection from "@components/statSection";
-import { Github, Linkedin, Mail, MapPin, Phone, Smartphone, Globe, Palette, Server, ExternalLink, Download, Menu, X, Send, User, Building2, MessageSquare, Loader2 } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Smartphone, Globe, Palette, Server, ExternalLink, Download, Menu, X, User, Building2, MessageSquare } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 
 type ProjectCategory = "All" | "Web" | "Flutter" | "ML" | "AI" | "Python";
@@ -35,7 +43,7 @@ type Project = {
 const allProjects: Project[] = [
     {
         name: "CoCreate",
-        image: mockmate,
+        image: cocreate,
         categories: ["Web"],
         tech: ["Next.js", "TailwindCss", "LiveBlocks"],
         github: "https://github.com/UKbhatt/CoCreate",
@@ -58,11 +66,19 @@ const allProjects: Project[] = [
     },
     {
         name: "TalkAI",
-        image: Supremecoding,
+        image: talkai,
         categories: ["Web", "AI"],
         tech: ["React.js", "Tailwind", "Node.js", "Gemini API"],
         github: "https://github.com/UKbhatt/TalkAi",
         live: "https://talk-ai-two.vercel.app",
+    },
+    {
+        name: "HealthDesk",
+        image: healthdesk,
+        categories: ["Web"],
+        tech: ["React.js", "Tailwind", "Node.js"],
+        github: "https://github.com/UKbhatt/HealthDesk",
+        live: "https://health-care-maqy.vercel.app",
     },
     {
         name: "SupremeCoding",
@@ -71,14 +87,6 @@ const allProjects: Project[] = [
         tech: ["React", "Tailwind", "Node.js"],
         github: "https://github.com/UKbhatt/SupremeCoding",
         live: "https://supremecoding.vercel.app",
-    },
-    {
-        name: "HealthDesk",
-        image: Supremecoding,
-        categories: ["Web"],
-        tech: ["React.js", "Tailwind", "Node.js"],
-        github: "https://github.com/UKbhatt/HealthDesk",
-        live: "https://health-care-maqy.vercel.app",
     },
     {
         name: "TwiddleUI",
@@ -90,7 +98,7 @@ const allProjects: Project[] = [
     },
     {
         name: "InboxIQ",
-        image: student,
+        image: inboxiq,
         categories: ["Flutter", "AI"],
         tech: ["Flutter", "Dart", "Supabase"],
         github: "https://github.com/UKbhatt/InboxIQ",
@@ -111,28 +119,28 @@ const allProjects: Project[] = [
     },
     {
         name: "ASD Multimodal Detection System",
-        image: reading,
+        image: asd,
         categories: ["ML"],
         tech: ["Deep Learning", "Transfer learning"],
         github: "https://colab.research.google.com/drive/165_fAic1qNym-SpQfv0d1XsSsrtedJTX?usp=sharing",
     },
     {
         name: "VaaniAi",
-        image: reading,
+        image: vaaniai,
         categories: ["ML", "AI"],
         tech: ["Python", "TensorFlow"],
         github: "https://github.com/UKbhatt/VaaniAI",
     },
     {
         name: "ShareSi",
-        image: reading,
+        image: sharesi,
         categories: ["Python"],
         tech: ["Python", "Django"],
         github: "https://github.com/UKbhatt/ShareSi",
     },
     {
         name: "JobCompass",
-        image: reading,
+        image: jobcompass,
         categories: ["Python"],
         tech: ["Python", "Django"],
         github: "https://github.com/UKbhatt/JobCompass",
@@ -258,8 +266,6 @@ export default function Portfolio() {
         subject: "",
         message: ""
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     const filteredProjects = projectFilter === "All"
         ? allProjects
@@ -329,34 +335,28 @@ export default function Portfolio() {
         setSidebarOpen(false);
     };
 
-    const handleContactSubmit = async (e: React.FormEvent) => {
+    const handleContactSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus(null);
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    ...contactForm,
-                    type: contactType
-                })
-            });
-
-            const data = await response.json();
-
-            if (data.ok) {
-                setSubmitStatus({ type: "success", message: "Message sent successfully! I'll get back to you soon." });
-                setContactForm({ name: "", email: "", phone: "", company: "", subject: "", message: "" });
-            } else {
-                setSubmitStatus({ type: "error", message: data.error || "Failed to send message. Please try again." });
-            }
-        } catch {
-            setSubmitStatus({ type: "error", message: "Network error. Please check your connection and try again." });
-        } finally {
-            setIsSubmitting(false);
-        }
+        
+        const to = "ubhatt2004@gmail.com";
+        const subject = contactType === "recruiter"
+            ? `[Recruiter] ${contactForm.subject || "Job Opportunity"} - ${contactForm.company || "Company"}`
+            : `[Contact] ${contactForm.subject || "New Message"}`;
+        
+        const bodyParts = [
+            `Name: ${contactForm.name}`,
+            `Email: ${contactForm.email}`,
+            contactForm.phone ? `Phone: ${contactForm.phone}` : "",
+            contactType === "recruiter" && contactForm.company ? `Company: ${contactForm.company}` : "",
+            "",
+            "Message:",
+            contactForm.message
+        ].filter(Boolean);
+        
+        const body = bodyParts.join("\n");
+        
+        const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(mailtoLink, "_blank");
     };
 
     return (
@@ -707,7 +707,7 @@ export default function Portfolio() {
                                                 className="w-full px-4 py-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50 
                                                 text-white placeholder-zinc-500 focus:border-amber-400/50 focus:outline-none 
                                                 transition-colors"
-                                                placeholder="+91 9876543210"
+                                                placeholder="+91 XXXXXXXXXX"
                                             />
                                         </div>
 
@@ -757,35 +757,16 @@ export default function Portfolio() {
                                         />
                                     </div>
 
-                                    {submitStatus && (
-                                        <div className={`p-4 rounded-xl ${submitStatus.type === "success"
-                                            ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
-                                            : "bg-red-500/10 border border-red-500/30 text-red-400"
-                                            }`}>
-                                            {submitStatus.message}
-                                        </div>
-                                    )}
-
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting}
                                         className="flex items-center justify-center gap-2 px-8 py-3 rounded-xl
                                         bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold
                                         hover:from-amber-400 hover:to-amber-500 hover:scale-[1.02] 
                                         active:scale-[0.98] transition-all duration-300 
-                                        shadow-lg shadow-amber-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        shadow-lg shadow-amber-500/20"
                                     >
-                                        {isSubmitting ? (
-                                            <>
-                                                <Loader2 size={18} className="animate-spin" />
-                                                Sending...
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Send size={18} />
-                                                Send Message
-                                            </>
-                                        )}
+                                        <Mail size={18} />
+                                        Open Email App
                                     </button>
                                 </form>
                             </Reveal>
