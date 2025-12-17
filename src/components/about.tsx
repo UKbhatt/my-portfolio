@@ -1,38 +1,38 @@
 "use client";
 import { FaFileLines, FaFolderOpen } from "react-icons/fa6";
-const DRIVE_FILE_ID = "1bVdGkTBrvbezQ_BGPqhG4yvi4kGAKb7v";
-const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`;
-
+const DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=1ZdVcOnyCnxeZarbl4Ug5-MTDpaDHIi1M`;
 
 export default function AboutSection() {
     return (
         <section
             id="about"
-            className="w-full px-4 md:px-8 lg:px-16 py-16 md:py-24 text-foreground"
+            className="w-full px-8 md:px-16 lg:px-24 py-20 bg-zinc-950"
         >
+            <div className="max-w-6xl">
+                <div className="mb-8">
+                    <span className="text-xs font-mono text-zinc-600 tracking-wider">// INTRODUCTION</span>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2 bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-600 bg-clip-text text-transparent">
+                        About Me
+                    </h2>
+                </div>
 
-            <div className="mx-auto max-w-5xl flex flex-col items-center text-center">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight flex flex-row gap-5 bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">
-                    About Me
-                </h2>
-
-                <p className="mt-4 text-sm sm:text-base leading-relaxed text-gray-300/90 max-w-2xl">
-                    I’m Utkarsh, a developer who enjoys building fast, clean, and delightful
+                <p className="text-sm sm:text-base leading-relaxed text-zinc-400 max-w-2xl">
+                    I&apos;m Utkarsh, a developer who enjoys building fast, clean, and delightful
                     experiences. I work across the stack—React/Next.js on the front-end
                     and Node.js on the back—focused on performance and DX.
                 </p>
 
-                <div className="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 w-full max-w-xl">
+                <div className="mt-8 flex flex-wrap gap-4">
                     <a
                         href={DOWNLOAD_URL}
                         aria-label="Download Resume"
                         className="group flex items-center justify-center gap-3 rounded-xl
-             bg-blue-600 text-white border border-blue-600 px-1 py-2 sm:py-2
-             transition-transform duration-300 hover:scale-[1.03]
-             shadow-md shadow-blue-900/30 cursor-pointer select-none"
+                        bg-white text-black px-5 py-2.5
+                        transition-all duration-300 hover:bg-zinc-200
+                        cursor-pointer select-none font-medium text-sm"
                     >
-                        <FaFileLines className="text-white text-xl sm:text-xl transition-transform duration-300 group-hover:-translate-y-0.5" />
-                        <span className="font-semibold text-sm sm:text-base">Download Resume</span>
+                        <FaFileLines className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5" />
+                        Download Resume
                     </a>
 
                     <div
@@ -40,7 +40,7 @@ export default function AboutSection() {
                         aria-label="View Projects"
                         tabIndex={0}
                         onClick={() =>
-                            document.getElementById("project")?.scrollIntoView({ behavior: "smooth" })
+                            document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
                         }
                         onKeyDown={(e) => {
                             if (e.key === "Enter" || e.key === " ") {
@@ -48,14 +48,13 @@ export default function AboutSection() {
                             }
                         }}
                         className="group flex items-center justify-center gap-3 rounded-xl
-                         border border-white/15 bg-transparent text-white
-                         px-1 py-2 sm:py-2
-                         transition-transform duration-300 hover:scale-[1.03]
-                         hover:bg-white/5 cursor-pointer select-none"
+                        border border-zinc-800 bg-transparent text-zinc-300
+                        px-5 py-2.5
+                        transition-all duration-300 hover:bg-zinc-900 hover:text-white
+                        cursor-pointer select-none font-medium text-sm"
                     >
-                        <FaFolderOpen className="text-gray-200 text-xl sm:text-xl transition-transform duration-300 
-              group-hover:translate-y-[-2px]" />
-                        <span className="font-semibold text-sm sm:text-base">View Projects</span>
+                        <FaFolderOpen className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5" />
+                        View Projects
                     </div>
                 </div>
             </div>
