@@ -151,9 +151,9 @@ const navItems = ["About", "Resume", "Stats", "Projects", "Skills", "Certificati
 
 const services = [
     {
-        icon: <Smartphone className="text-amber-400" size={28} />,
-        title: "Mobile App Development",
-        desc: "Cross-platform mobile applications using Flutter and React Native, focused on performance, scalability, and clean UI.",
+        icon: <Palette className="text-amber-400" size={28} />,
+        title: "Flutter Development",
+        desc: "High-quality Flutter applications with clean architecture, state management, and seamless cross-platform experience.",
     },
     {
         icon: <Globe className="text-amber-400" size={28} />,
@@ -161,9 +161,9 @@ const services = [
         desc: "End-to-end web applications using MERN and Next.js with responsive UI, secure APIs, and modern architecture.",
     },
     {
-        icon: <Palette className="text-amber-400" size={28} />,
-        title: "Flutter Development",
-        desc: "High-quality Flutter applications with clean architecture, state management, and seamless cross-platform experience.",
+        icon: <Smartphone className="text-amber-400" size={28} />,
+        title: "iOS App Development",
+        desc: "iOS applications using Flutter and React Native, focused on performance, scalability, and clean UI.",
     },
     {
         icon: <Server className="text-amber-400" size={28} />,
